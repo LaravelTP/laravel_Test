@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class stands extends Model
+class commande extends Model
 {
-    /** @use HasFactory<\Database\Factories\StandsFactory> */
+    /** @use HasFactory<\Database\Factories\CommandesFactory> */
     use HasFactory;
 }

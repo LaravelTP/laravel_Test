@@ -1,65 +1,68 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\stands;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Stand;
 use Illuminate\Http\Request;
 
 class StandsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
+     * Affiche la liste des stands approuvés.
+     *
+     * @return \Illuminate\View\View
      */
     public function create()
     {
-        //
+       return view('public.stands.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
+{
+    $request->validate([
+        'nom' => 'required|string|max:255',
+        'description' => 'required|string',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+    ]);
+
+    // Gestion de l'image
+    $imagePath = null;
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('stands', 'public');
+    }
+
+    Stand::create([
+        'nom' => $request->nom,
+        'description' => $request->description,
+        'image' => $imagePath,
+        'user_id' => Auth::id() ?? 1, // met Auth::id() si l'user est connecté, sinon un id temporaire
+        'approuve' => true,
+        
+    ]);
+
+    return redirect()->route('stands.index')->with('success', 'Stand créé avec succès.');
+}
+    public function index()
     {
-        //
+        // Récupère uniquement les stands approuvés
+        $stands = Stand::where('approuve', true)->get();
+
+        // Affiche la vue 'stands.index' avec les stands
+        return view('public.stands.index', compact('stands'));
     }
 
     /**
-     * Display the specified resource.
+     * Affiche les détails d'un stand spécifique avec ses produits et son propriétaire.
+     *
+     * @param  \App\Models\Stand  $stand
+     * @return \Illuminate\View\View
      */
-    public function show(stands $stands)
+    public function show(Stand $stand)
     {
-        //
-    }
+        // Récupère les produits et le propriétaire associés à ce stand
+        $produits = $stand->produits;
+        $user = $stand->user;
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(stands $stands)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, stands $stands)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(stands $stands)
-    {
-        //
+        // Affiche la vue 'stands.show' avec les données
+        return view('public.stands.show', compact('stand', 'produits', 'user'));
     }
 }

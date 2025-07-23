@@ -1,51 +1,78 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eat - Discover Amazing Food Experiences</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        purple: {
-                            50: '#faf5ff',
-                            100: '#f3e8ff',
-                            200: '#e9d5ff',
-                            300: '#d8b4fe',
-                            400: '#c084fc',
-                            500: '#a855f7',
-                            600: '#9333ea',
-                            700: '#7c3aed',
-                            800: '#6b21a8',
-                            900: '#581c87',
-                        },
-                        fuchsia: {
-                            50: '#fdf4ff',
-                            100: '#fae8ff',
-                            200: '#f5d0fe',
-                            300: '#f0abfc',
-                            400: '#e879f9',
-                            500: '#d946ef',
-                            600: '#c026d3',
-                            700: '#a21caf',
-                            800: '#86198f',
-                            900: '#701a75',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
-<body class="bg-white">
-    <!-- Navigation -->
+@extends('basiclayout')
 
-    <!-- Hero Section -->
-    
+@section('title','Home-page')
 
-    <!-- Featured Restaurants -->
+<x-header color='bg-purple-600'/>
+
+@section('content')
+    <section class="relative bg-gradient-to-br from-purple-50 via-white to-fuchsia-50 py-20 overflow-hidden">
+        <!-- Background Decorations -->
+        <div class="absolute top-0 left-0 w-72 h-72 bg-gradient-to-r from-purple-200 to-fuchsia-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+        <div class="absolute top-0 right-0 w-72 h-72 bg-gradient-to-r from-fuchsia-200 to-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-2000"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Hero Content -->
+                <div class="text-center lg:text-left">
+                    <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                        Discover Amazing
+                        <span class="bg-gradient-to-r from-purple-600 to-fuchsia-600 bg-clip-text text-transparent block">
+                            Food Experiences
+                        </span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl">
+                        Find the best restaurants, discover new recipes, and connect with fellow food lovers in your area. Your culinary journey starts here.
+                    </p>
+
+                    <!-- Search Bar -->
+                    {{--  <div class="flex flex-col sm:flex-row gap-4 mb-8 max-w-2xl">
+                        <div class="relative flex-1">
+                            <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input 
+                                type="text" 
+                                placeholder="Search restaurants, cuisines, or dishes..." 
+                                class="w-full pl-12 pr-4 py-4 text-lg border border-purple-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white/80 backdrop-blur-sm"
+                            >
+                        </div>
+                        <button class="bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white px-8 py-4 rounded-2xl font-medium hover:from-purple-600 hover:to-fuchsia-600 transition-all duration-300 shadow-lg hover:shadow-xl">
+                            Search
+                        </button>
+                    </div>  --}}
+
+                    <!-- Stats -->
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-8 text-sm text-gray-600">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt text-purple-500"></i>
+                            <span>500+ Locations</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-utensils text-purple-500"></i>
+                            <span>1000+ Restaurants</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-users text-purple-500"></i>
+                            <span>50k+ Users</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="relative">
+                    <div class="relative z-10">
+                        <img 
+                            src="https://plus.unsplash.com/premium_photo-1681406994502-bb673c265877?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                            alt="Delicious food spread" 
+                            class="rounded-3xl shadow-2xl w-full"
+                        >
+                    </div>
+                    
+                    <!-- Floating Card -->
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -56,6 +83,8 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                {{--  Ici tu dois prendre l'exemple du component et faire en sorte de publier les 3 meilleurs stands --}}
                 <!-- Restaurant Card 1 -->
                 <div class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-purple-50">
                     <div class="relative overflow-hidden">
@@ -264,9 +293,6 @@
                 Join thousands of food lovers who trust Eat to discover amazing dining experiences every day.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="bg-white text-purple-600 px-8 py-4 rounded-2xl font-semibold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl">
-                    Download App
-                </button>
                 <button class="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white hover:text-purple-600 transition-all duration-300">
                     Explore Restaurants
                 </button>
@@ -282,4 +308,4 @@
             console.log('Eat app loaded successfully!');
         });
     </script>
-</body>
+@endsection

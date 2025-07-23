@@ -45,16 +45,6 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-6">Newsletter</h3>
                     <p class="text-gray-400 mb-4">Get the latest food trends and restaurant updates.</p>
-                    <div class="flex space-x-2">
-                        <input 
-                            type="email" 
-                            placeholder="Your email" 
-                            class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                        >
-                        <button class="bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white px-4 py-2 rounded-lg hover:from-purple-600 hover:to-fuchsia-600 transition-all duration-300">
-                            Subscribe
-                        </button>
-                    </div>
                 </div>
             </div>
 

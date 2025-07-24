@@ -42,8 +42,9 @@
 
             <!-- Login Form -->
             <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-purple-100">
-                <form class="space-y-6" action="#" method="POST">
+                <form class="space-y-6" action="logUser" method="POST">
                     <!-- Email Field -->
+                    @csrf
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
                             Email Address
@@ -132,7 +133,7 @@
             <div class="text-center">
                 <p class="text-gray-600">
                     Don't have an account?
-                    <a href="register.html" class="font-medium text-purple-600 hover:text-fuchsia-500 transition-colors ml-1">
+                    <a href="{{ url('/register') }}" class="font-medium text-purple-600 hover:text-fuchsia-500 transition-colors ml-1">
                         Sign up for free
                     </a>
                 </p>
@@ -186,7 +187,7 @@
         </div>
     </footer>
 
-    <script>
+    {{--  <script>
         // Toggle password visibility
         function togglePassword() {
             const passwordInput = document.getElementById('password');
@@ -267,6 +268,6 @@
                 }
             });
         });
-    </script>
+    </script>  --}}
 
 @endsection

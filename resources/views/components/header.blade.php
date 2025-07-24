@@ -20,10 +20,10 @@
 
                 <!-- Auth Buttons -->
                 <div class="flex items-center space-x-4">
-                    <button href="{{ url('/login') }}" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Sign In</button>
-                    <button class="bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white px-6 py-2 rounded-full font-medium hover:from-purple-600 hover:to-fuchsia-600 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    <a href="{{ url('/login') }}" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Sign In</a>
+                    <a href="{{ url('/register') }}" class="bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white px-6 py-2 rounded-full font-medium hover:from-purple-600 hover:to-fuchsia-600 transition-all duration-300 shadow-lg hover:shadow-xl">
                         Get Started
-                    </button>
+                    </a>
                 </div>
 
                 <!-- Mobile Menu Button -->

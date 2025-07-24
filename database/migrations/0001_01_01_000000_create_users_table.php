@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('nom_entreprise')->nullable();
-            $table->string('role')->enum('Role',Role::class);
-            $table->string('profile_image');
+            $table->enum('role', ['Admin','Entrepreneur_en_attente','Entrepreneur_approuve'])->default('Entrepreneur_en_attente');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
@@ -51,3 +50,4 @@ return new class extends Migration
         Schema::dropIfExists('sessions');
     }
 };
+
